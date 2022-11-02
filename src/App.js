@@ -4,43 +4,37 @@ import Thank from './images/illustration-thank-you.svg'
 import React from 'react';
 function App() {
 
-  const [isSubmitted, setIsSubmitted] = React.useState(true)
+  const [isSubmitted, setIsSubmitted] = React.useState(false)
+  const [items, setItems] = React.useState('')
 
-  const [items, setItems] = React.useState({
-    item:''
-  })
-
-  console.log(items.item)
-
-  function handleChange(event){
-    const {name, value} = event.target
-    setItems(prevItems => ({
-      ...prevItems,
-      [name]:parseInt(value)
-    }))
+  const Button=(props)=>{
+    return(
+      <button className='btn' onClick={()=>setItems(props.number)}>
+      {props.number}
+      </button>
+    )
   }
-
 
   return (
     <>
-    {isSubmitted && <div className='wrapper'>
+    {!isSubmitted && <div className='wrapper'>
       <img src={Star} className='icon' alt='star icon'/>
       <h2 className='heading'>How did we do?</h2>
       <p className='paragraph'>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
       <ul className='list-ul'>
-        <li><button className='btn' value='1' name='item' onClick={handleChange}>1</button></li>
-        <li><button className='btn' value='2' name='item' onClick={handleChange}>2</button></li>
-        <li><button className='btn' value='3' name='item' onClick={handleChange}>3</button></li>
-        <li><button className='btn' value='4' name='item' onClick={handleChange}>4</button></li>
-        <li><button className='btn' value='5' name='item' onClick={handleChange}>5</button></li>
+        <li><Button number={1}/></li>
+        <li><Button number={2}/></li>
+        <li><Button number={3}/></li>
+        <li><Button number={4}/></li>
+        <li><Button number={5}/></li>
       </ul>
       <button 
         className='btn-submit'
-        onClick={()=>setIsSubmitted(false)}
+        onClick={()=>setIsSubmitted(true)}
       >SUBMIT</button>
     </div>
 }
-    {!isSubmitted &&
+    {isSubmitted &&
     <ThankYou setIsSubmitted={setIsSubmitted} items={items}/>
     }
     
@@ -58,7 +52,7 @@ function ThankYou(props){
             }}
     >
       <img src={Thank} className='img'/>
-      <p className='select-paragraph'>You selected 4 out of 5</p>
+      <p className='select-paragraph'>You selected {props.items} out of 5</p>
       <h2 className='heading'>Thank you!</h2>
       <p 
         className='paragraph'
@@ -66,7 +60,7 @@ function ThankYou(props){
       >
         We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!  
       </p>
-      <button onClick={()=>props.setIsSubmitted(true)} className='btn-submit' >AGAIN</button>
+      <button onClick={()=>props.setIsSubmitted(false)} className='btn-submit' >AGAIN</button>
     </div>
   )
 }
