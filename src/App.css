@@ -74,6 +74,16 @@ body{
     cursor: pointer;
 }
 
+.btn:hover{
+    background-color: var(--orange);
+    color: #fff;
+}
+
+.btn:focus{
+    background-color:var(--medium-gray);
+    color: #fff;
+}
+
 .btn-submit{
     border-radius: 22.5px; 
     border: none;
@@ -82,6 +92,14 @@ body{
     color:#fff;
     font-size: 14px;
     text-transform: capitalize;
+    font-weight: bold;
+    letter-spacing: 1.86667px;
+    cursor: pointer;
+}
+
+.btn-submit:hover{
+    background-color: #fff;
+    color: var(--orange);
 }
 
 .img{
