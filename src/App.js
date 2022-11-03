@@ -2,11 +2,11 @@ import "./App.css";
 import Star from "./images/icon-star.svg";
 import Thank from "./images/illustration-thank-you.svg";
 import React from "react";
+
 function App() {
+  
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [items, setItems] = React.useState("");
-
-  console.log(items)
   
     const Button = (props) => {
       return (
@@ -15,8 +15,6 @@ function App() {
         </button>
       );
     };
-  
-    
 
   function handleSubmit(){
     if(items){
